@@ -166,8 +166,8 @@ article,
 .hero-pic img {
   height: 100%;
   object-fit: cover;
-  object-position: top 0.4rem right -1.3rem;
-  transform: scale(1.9);
+  object-position: top rem right -1.3rem;
+  
 }
 
 .hero-info h1,
