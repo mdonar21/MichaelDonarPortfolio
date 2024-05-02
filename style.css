@@ -116,6 +116,10 @@ footer,
   flex-direction: column;
 }
 
+ p{
+  font-size: 1rem;
+}
+
 .hero,
 .btn-bg,
 .portfolio,
