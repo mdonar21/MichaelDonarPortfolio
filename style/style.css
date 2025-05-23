@@ -14,71 +14,139 @@
   font-style: normal;
 }
 
-
-body {
+* {
   margin: 0;
-  background-color: #141314;
-  color: white;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.navbar {
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #000;
+  color: white;
+}
+
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "DM Sans";
-  color: white;
-  padding-top: 1.2rem;
+  padding: 20px 40px;
 }
 
-.navbar .name {
-  background: linear-gradient(90deg, #0077FF, #B21593);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  font-size: 1.4rem;
-  font-weight: bold;
-}
-
-.navbar .nav-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.navbar .nav-links a {
-  text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s;
-  color: white;
-}
-
-.navbar .nav-links a:hover {
-  color: #ffcc00;
-}
-
-.infosec {
-  padding-top: 4rem;
-  font-family: "DM Sans", sans-serif;
-  font-size: 1.6rem;
-}
-
-.nameSpan {
-  background: linear-gradient(90deg, #0077FF, #B21593);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-}
-
-.infosec p {
+.logo {
   font-size: 1.2rem;
-  font-family: "Montserrat", sans-serif;
-  color: E2E2E2;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Project Cards */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #aaa;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 40px;
+  height: 90vh;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-text h4 {
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  max-width: 400px;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background: white;
+  color: black;
+  padding: 12px 24px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #eee;
+}
+
+.hero-image-placeholder {
+  width: 40%;
+  height: 400px;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 1rem;
+  border: 2px dashed #333;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text, .hero-image-placeholder {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero-image-placeholder {
+    height: 250px;
+    margin-top: 30px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+/* Project Cards OLD*/
 article {
   --img-scale: 1.001;
   --title-color: black;
@@ -188,6 +256,7 @@ Generic layout (demo looks)
   article {
     container: card/inline-size;
   }
+
   .article-body p {
     display: none;
   }
@@ -199,14 +268,17 @@ Generic layout (demo looks)
     grid-template-columns: 100px 1fr;
     gap: 16px;
   }
+
   .article-body {
     padding-left: 0;
   }
+
   figure {
     width: 100%;
     height: 100%;
     overflow: hidden;
   }
+
   figure img {
     height: 100%;
     aspect-ratio: 1;
@@ -215,6 +287,6 @@ Generic layout (demo looks)
 }
 
 .sr-only:not(:focus):not(:active) {
-  clip: rect(0 0 0 0); 
+  clip: rect(0 0 0 0);
   clip-path: inset(50%);
 }
