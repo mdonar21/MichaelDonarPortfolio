@@ -20,10 +20,25 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  /* Makes scrolling to anchor links smooth */
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #000;
-  color: white;
+  background-color: #d6d6d0;
+  color: black;
+  min-height: 500px;
+  /* Create the parallax scrolling effect */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 80px;
+  /* Add padding to the body to prevent content from being hidden behind the fixed header. Adjust as needed based on header height. */
+  overflow-x: hidden;
+  transform: translateZ(0);
+  /* Prevent horizontal scroll due to shapes */
 }
 
 header {
@@ -31,12 +46,26 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
+  background-color: rgba(214, 214, 208, 0.95);
+  /* Slightly transparent background for fixed header */
+  position: fixed;
+  /* Makes the header scroll with the user */
+  top: 0;
+  /* Positions it at the top of the viewport */
+  left: 0;
+  /* Aligns it to the left of the viewport */
+  width: 100%;
+  /* Makes it span the full width of the viewport */
+  z-index: 1000;
+  /* Ensures it stays on top of other content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Optional: adds a subtle shadow */
 }
 
 .logo {
   font-size: 1.2rem;
   font-weight: bold;
-  background-color: white;
+  background-color: black;
   color: black;
   border-radius: 50%;
   width: 40px;
@@ -53,7 +82,8 @@ nav ul {
 }
 
 nav a {
-  color: white;
+  color: #023047;
+  /* Changed to match h1/h2 color for better contrast on a light background */
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
@@ -63,16 +93,35 @@ nav a:hover {
   color: #aaa;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  color: #023047;
+}
+
+p {
+  color: #121211;
+}
+
+/* User's .hero styles, augmented for shapes */
 .hero {
+  position: relative;
+  /* Essential for absolute positioning of shapes */
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 60px 40px;
   height: 90vh;
+  /* Maintain user's height */
+  overflow: hidden;
+  /* Clip shapes that go outside */
 }
 
 .hero-text {
   max-width: 50%;
+  z-index: 50;
+  /* Ensure text is above shapes */
 }
 
 .hero-text h4 {
@@ -89,44 +138,74 @@ nav a:hover {
 .hero-text p {
   max-width: 400px;
   line-height: 1.6;
-  color: #ccc;
   margin-bottom: 30px;
 }
 
 .btn {
-  background: white;
-  color: black;
+  background: #023047;
+  color: white;
   padding: 12px 24px;
   border: none;
   text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease;
+  margin-right: 2em;
 }
 
 .btn:hover {
   background: #eee;
+  color: #023047;
+  /* Changed hover color for better contrast */
 }
 
 .hero-image-placeholder {
-  width: 40%;
+  width: 400px;
   height: 400px;
-  background: #111;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #555;
   font-size: 1rem;
-  border: 2px dashed #333;
+  margin-right: 4em;
+  z-index: 50;
+  /* Ensure image is above shapes */
+}
+
+
+#container {
+  text-align: center;
+}
+
+a,
+figure {
+  display: inline-block;
+}
+
+figcaption {
+  margin: 10px 0 0 0;
+  font-variant: small-caps;
+  font-family: Arial;
+  font-weight: bold;
+  color: #bb3333;
+  text-align: center;
+}
+
+figure {
+  padding: 5px;
 }
 
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
     text-align: center;
+    justify-content: flex-start;
+    /* Adjust for mobile layout */
+    padding-top: 5rem;
   }
 
-  .hero-text, .hero-image-placeholder {
+  .hero-text,
+  .hero-image-placeholder {
     max-width: 100%;
     width: 100%;
   }
@@ -140,153 +219,439 @@ nav a:hover {
     flex-wrap: wrap;
     justify-content: center;
   }
-}
 
-
-
-
-
-/* Project Cards OLD*/
-article {
-  --img-scale: 1.001;
-  --title-color: black;
-  --link-icon-translate: -20px;
-  --link-icon-opacity: 0;
-  position: relative;
-  border-radius: 16px;
-  box-shadow: none;
-  background: #fff;
-  transform-origin: center;
-  transition: all 0.4s ease-in-out;
-  overflow: hidden;
-}
-
-article a::after {
-  position: absolute;
-  inset-block: 0;
-  inset-inline: 0;
-  cursor: pointer;
-  content: "";
-}
-
-/* basic article elements styling */
-article h2 {
-  margin: 0 0 18px 0;
-  font-family: "Bebas Neue", cursive;
-  font-size: 1.9rem;
-  letter-spacing: 0.06em;
-  color: var(--title-color);
-  transition: color 0.3s ease-out;
-}
-
-figure {
-  margin: 0;
-  padding: 0;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  border-radius: 1rem;
-  border-color: #0077FF;
-}
-
-article img {
-  max-width: 100%;
-  transform-origin: center;
-  transform: scale(var(--img-scale));
-  transition: transform 0.4s ease-in-out;
-}
-
-.article-body {
-  padding: 24px;
-}
-
-article a {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: #28666e;
-}
-
-article a:focus {
-  outline: 1px dotted #28666e;
-}
-
-article a .icon {
-  min-width: 24px;
-  width: 24px;
-  height: 24px;
-  margin-left: 5px;
-  transform: translateX(var(--link-icon-translate));
-  opacity: var(--link-icon-opacity);
-  transition: all 0.3s;
-}
-
-/* using the has() relational pseudo selector to update our custom properties */
-article:has(:hover, :focus) {
-  --img-scale: 1.1;
-  --title-color: #28666e;
-  --link-icon-translate: 0;
-  --link-icon-opacity: 1;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-}
-
-
-/************************ 
-Generic layout (demo looks)
-**************************/
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-.articles {
-  display: grid;
-  max-width: 1200px;
-  max-height: px;
-  margin-inline: auto;
-  padding-inline: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
-  margin-top: 4rem;
-
-}
-
-@media screen and (max-width: 960px) {
-  article {
-    container: card/inline-size;
+  /* Mobile responsiveness for shapes */
+  .shape {
+    width: 30vw;
+    /* Larger shapes on smaller screens for visibility */
+    height: 30vw;
   }
 
-  .article-body p {
+  .circle-1 {
+    top: 5vh;
+    left: 5vw;
+  }
+
+  .diamond {
+    width: 35vw;
+    height: 35vw;
+    top: 25vh;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Center diamond */
+  }
+
+  .irregular {
+    width: 38vw;
+    height: 38vw;
+    top: 5vh;
+    right: 5vw;
+  }
+
+  .circle-2 {
+    width: 25vw;
+    height: 25vw;
+    bottom: 5vh;
+    left: 10vw;
+    transform: none;
+    /* Remove translateX */
+  }
+
+  .abstract-line {
     display: none;
+    /* Hide abstract lines on very small screens to avoid clutter */
   }
 }
 
-@container card (min-width: 380px) {
-  .article-wrapper {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 16px;
+@media (max-width: 480px) {
+  .shape {
+    width: 40vw;
+    height: 40vw;
   }
 
-  .article-body {
-    padding-left: 0;
+  .circle-1 {
+    top: 3vh;
+    left: 3vw;
   }
 
-  figure {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  .diamond {
+    width: 45vw;
+    height: 45vw;
+    top: 20vh;
   }
 
-  figure img {
-    height: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
+  .irregular {
+    width: 48vw;
+    height: 48vw;
+    top: 3vh;
+    right: 3vw;
+  }
+
+  .circle-2 {
+    width: 35vw;
+    height: 35vw;
+    bottom: 3vh;
+    left: 5vw;
   }
 }
 
-.sr-only:not(:focus):not(:active) {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
+/* Typewriter Effect for Hero Section */
+.typewriter {
+  display: inline-block;
+  min-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing-effect 8s infinite steps(1) forwards;
+  vertical-align: bottom;
+}
+
+/*Typewriter*/
+/* Typewriter effect 1 */
+@keyframes typing {
+
+  /*Designer*/
+  0.0000%,
+  27.3488% {
+    content: "";
+  }
+
+  3.4186%,
+  23.9302% {
+    content: "d";
+  }
+
+  4.5581%,
+  22.7907% {
+    content: "de";
+  }
+
+  5.6977%,
+  21.6512% {
+    content: "des";
+  }
+
+  6.8372%,
+  20.5116% {
+    content: "desi";
+  }
+
+  7.9767%,
+  19.3721% {
+    content: "desig";
+  }
+
+  9.1163%,
+  18.2326% {
+    content: "design";
+  }
+
+  10.2558%,
+  17.0930% {
+    content: "designer";
+  }
+
+  /* Researcher */
+  27.5000%,
+  54.8488% {
+    content: "";
+  }
+
+  30.9186%,
+  51.4302% {
+    content: "r";
+  }
+
+  32.0581%,
+  50.2907% {
+    content: "re";
+  }
+
+  33.1977%,
+  49.1512% {
+    content: "res";
+  }
+
+  34.3372%,
+  48.0116% {
+    content: "rese";
+  }
+
+  35.4767%,
+  46.8721% {
+    content: "resea";
+  }
+
+  36.6163%,
+  45.7326% {
+    content: "resear";
+  }
+
+  37.7558%,
+  44.5930% {
+    content: "researc";
+  }
+
+  38.8953%,
+  43.4535% {
+    content: "researche";
+  }
+
+  40.0349%,
+  42.3140% {
+    content: "researcher";
+  }
+
+  /* Learner */
+  55.0000%,
+  82.3488% {
+    content: "";
+  }
+
+  58.4186%,
+  78.9302% {
+    content: "l";
+  }
+
+  59.5581%,
+  77.7907% {
+    content: "le";
+  }
+
+  60.6977%,
+  76.6512% {
+    content: "lea";
+  }
+
+  61.8372%,
+  75.5116% {
+    content: "lear";
+  }
+
+  62.9767%,
+  74.3721% {
+    content: "learn";
+  }
+
+  64.1163%,
+  73.2326% {
+    content: "learne";
+  }
+
+  65.2558%,
+  72.0930% {
+    content: "learner";
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.typewriter {
+  --caret: currentcolor;
+}
+
+.typewriter::before {
+  content: "";
+  animation: typing 13.5s infinite;
+}
+
+.typewriter::after {
+  content: "";
+  border-right: 1px solid var(--caret);
+  animation: blink 0.5s linear infinite;
+}
+
+.typewriter.thick::after {
+  border-right: 1ch solid var(--caret);
+}
+
+.typewriter.nocaret::after {
+  border-right: 0;
+}
+
+
+@media (prefers-reduced-motion) {
+  .typewriter::after {
+    animation: none;
+  }
+
+  @keyframes sequencePopup {
+
+    0%,
+    100% {
+      content: "developer";
+    }
+
+    25% {
+      content: "writer";
+    }
+
+    50% {
+      content: "reader";
+    }
+
+    75% {
+      content: "human";
+    }
+  }
+
+  .typewriter::before {
+    content: "developer";
+    animation: sequencePopup 12s linear infinite;
+  }
+}
+
+/*Scroll down arrow */
+.down-arrow {
+  position: absolute;
+  top: calc(100vh - 60px);
+  left: calc(50% - 14px);
+  width: 0;
+  height: 30px;
+  border: 2px solid;
+  border-radius: 2px;
+  z-index: 50;
+  /* Ensure it's above shapes */
+}
+
+.down-arrow:after {
+  content: " ";
+  position: absolute;
+  top: 12px;
+  left: -10px;
+  width: 16px;
+  height: 16px;
+  border-bottom: 4px solid;
+  border-right: 4px solid;
+  border-radius: 4px;
+  transform: rotateZ(45deg);
+}
+
+@keyframes jumpInfinite {
+  0% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: 20px;
+  }
+
+  100% {
+    margin-top: 0;
+  }
+}
+
+.down-arrow {
+  animation: jumpInfinite 1.5s infinite;
+}
+
+/*project page*/
+.projectPage {
+  margin-top: 10em;
+}
+
+.projectPage h1 {
+  text-align: center;
+}
+
+/* Styles for shapes - Merged from previous immersive */
+.shape {
+  position: absolute;
+  background-image: url('https://placehold.co/400x400/87CEEB/FFFFFF?text=Circle+Image');
+  /* Placeholder circular image */
+  background-size: cover;
+  /* Ensure the image covers the entire shape */
+  background-position: center;
+  /* Center the image within the shape */
+  background-repeat: no-repeat;
+  border-radius: 0.75rem;
+  /* Rounded corners for all shapes */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Subtle shadow */
+  transition: all 0.3s ease-in-out;
+  /* Smooth transitions for responsiveness */
+  z-index: 10;
+  /* Ensure shapes are behind hero-text and hero-image-placeholder */
+}
+
+/* Circle 1 (Top-Left) */
+.circle-1 {
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  /* Perfect circle */
+  top: 10vh;
+  left: 10vw;
+}
+
+/* Diamond (Center-Left) */
+.diamond {
+  width: 18vw;
+  height: 18vw;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  /* Diamond shape */
+  top: 35vh;
+  left: 20vw;
+}
+
+/* Irregular Shape (Top-Right) - Approximated with a custom polygon */
+.irregular {
+  width: 22vw;
+  height: 22vw;
+  /* This polygon creates a shape with two 'cut' corners, mimicking an abstract feel */
+  clip-path: polygon(0% 15%, 15% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%);
+  top: 8vh;
+  right: 12vw;
+}
+
+/* Circle 2 (Bottom-Center) */
+.circle-2 {
+  width: 12vw;
+  height: 12vw;
+  border-radius: 50%;
+  bottom: 15vh;
+  left: 45vw;
+}
+
+/* Abstract Lines/Curves */
+.abstract-line {
+  position: absolute;
+  border: 2px solid #f97316;
+  /* Orange color from the image */
+  border-radius: 50%;
+  /* Make it circular for curves */
+  opacity: 0.6;
+  z-index: 5;
+  /* Even further back */
+}
+
+.line-1 {
+  width: 60vw;
+  height: 60vw;
+  top: -20vh;
+  left: -20vw;
+  transform: rotate(-15deg);
+  border-left-color: transparent;
+  /* Create a partial circle */
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.line-2 {
+  width: 40vw;
+  height: 40vw;
+  bottom: -10vh;
+  right: -10vw;
+  transform: rotate(45deg);
+  border-top-color: transparent;
+  border-left-color: transparent;
 }
