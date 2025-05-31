@@ -554,19 +554,9 @@ figure {
   animation: jumpInfinite 1.5s infinite;
 }
 
-/*project page*/
-.projectPage {
-  margin-top: 10em;
-}
-
-.projectPage h1 {
-  text-align: center;
-}
-
 /* Styles for shapes - Merged from previous immersive */
 .shape {
   position: absolute;
-  background-image: url('https://placehold.co/400x400/87CEEB/FFFFFF?text=Circle+Image');
   /* Placeholder circular image */
   background-size: cover;
   /* Ensure the image covers the entire shape */
@@ -594,24 +584,8 @@ figure {
 }
 
 /* Diamond (Center-Left) */
-.diamond {
-  width: 18vw;
-  height: 18vw;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  /* Diamond shape */
-  top: 35vh;
-  left: 20vw;
-}
 
 /* Irregular Shape (Top-Right) - Approximated with a custom polygon */
-.irregular {
-  width: 22vw;
-  height: 22vw;
-  /* This polygon creates a shape with two 'cut' corners, mimicking an abstract feel */
-  clip-path: polygon(0% 15%, 15% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%);
-  top: 8vh;
-  right: 12vw;
-}
 
 /* Circle 2 (Bottom-Center) */
 .circle-2 {
@@ -654,4 +628,53 @@ figure {
   transform: rotate(45deg);
   border-top-color: transparent;
   border-left-color: transparent;
+}
+
+/* project page */
+.projectPage {
+  margin-top: 10em;
+}
+
+.projectPage h1 {
+  text-align: center;
+}
+
+/* Gallery*/
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  /* Compensate for excess margin on outer gallery flex items */
+  margin: -1rem -1rem;
+}
+.gallery-item {
+  /* Minimum width of 24rem and grow to fit available space */
+  flex: 1 0 24rem;
+  /* Margin value should be half of grid-gap value as margins on flex items don't collapse */
+  margin: 1rem;
+  box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+.gallery-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease-out;
+}
+
+.gallery-image:hover {
+  transform: scale(1.15);
+}
+
+@supports (display: grid) {
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+    grid-gap: 2rem;
+  }
+
+  .gallery,
+  .gallery-item {
+    margin: 0;
+  }
 }
