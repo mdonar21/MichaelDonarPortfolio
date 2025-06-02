@@ -172,29 +172,6 @@ p {
   /* Ensure image is above shapes */
 }
 
-
-#container {
-  text-align: center;
-}
-
-a,
-figure {
-  display: inline-block;
-}
-
-figcaption {
-  margin: 10px 0 0 0;
-  font-variant: small-caps;
-  font-family: Arial;
-  font-weight: bold;
-  color: #bb3333;
-  text-align: center;
-}
-
-figure {
-  padding: 5px;
-}
-
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
@@ -510,31 +487,9 @@ figure {
   }
 }
 
-/*Scroll down arrow */
-.down-arrow {
-  position: absolute;
-  top: calc(100vh - 60px);
-  left: calc(50% - 14px);
-  width: 0;
-  height: 30px;
-  border: 2px solid;
-  border-radius: 2px;
-  z-index: 50;
-  /* Ensure it's above shapes */
-}
 
-.down-arrow:after {
-  content: " ";
-  position: absolute;
-  top: 12px;
-  left: -10px;
-  width: 16px;
-  height: 16px;
-  border-bottom: 4px solid;
-  border-right: 4px solid;
-  border-radius: 4px;
-  transform: rotateZ(45deg);
-}
+
+
 
 @keyframes jumpInfinite {
   0% {
@@ -629,52 +584,38 @@ figure {
   border-top-color: transparent;
   border-left-color: transparent;
 }
-
-/* project page */
-.projectPage {
-  margin-top: 10em;
+ 
+/* Project Page */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px; 
+  padding: 20px;
+  max-width: 1200px; 
+  margin: 0 auto; 
 }
 
-.projectPage h1 {
-  text-align: center;
-}
-
-/* Gallery*/
-.gallery {
+.image-grid figure {
   display: flex;
-  flex-wrap: wrap;
-  /* Compensate for excess margin on outer gallery flex items */
-  margin: -1rem -1rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  overflow: hidden; 
+
 }
-.gallery-item {
-  /* Minimum width of 24rem and grow to fit available space */
-  flex: 1 0 24rem;
-  /* Margin value should be half of grid-gap value as margins on flex items don't collapse */
-  margin: 1rem;
-  box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
-  overflow: hidden;
-}
-.gallery-image {
-  display: block;
+
+.image-grid img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 400ms ease-out;
+  height: auto;
+  display: block;
+  border-radius: 4px; 
 }
 
-.gallery-image:hover {
-  transform: scale(1.15);
-}
 
-@supports (display: grid) {
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-    grid-gap: 2rem;
-  }
-
-  .gallery,
-  .gallery-item {
-    margin: 0;
-  }
+.image-grid figcaption {
+  margin: 10px 0 0 0;
+  font-variant: small-caps;
+  font-family: Arial;
+  font-weight: bold;
+  text-align: center;
 }
