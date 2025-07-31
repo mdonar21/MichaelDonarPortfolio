@@ -1,55 +1,55 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michael Donar - Portfolio</title>
 
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
 
-  <title>Michael Donar</title>
-  <meta name="description" content="Check out Michael Donar's portfolio site and look at their projects and skills, and view their impressive live
-       sites and resume and contact information">
+  <meta name="description"
+    content="Explore Michael Donar's portfolio, showcasing projects, skills, live sites, and contact information.">
   <meta property="og:url" content="https://mdonar21.github.io/MichaelDonarPortfolio/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Michael Donar">
-  <meta property="og:description" content="Check out Michael Donar's portfolio site and look at their projects and skills, and view their impressive live
-       sites and resume and contact information">
+  <meta property="og:title" content="Michael Donar - Portfolio">
+  <meta property="og:description"
+    content="Explore Michael Donar's portfolio, showcasing projects, skills, live sites, and contact information.">
   <meta property="og:image" content="https://mdonar21.github.io/MichaelDonarPortfolio/assets/thumb.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="twitter:domain" content="mdonar21.github.io">
   <meta property="twitter:url" content="https://mdonar21.github.io/MichaelDonarPortfolio/">
-  <meta name="twitter:title" content="Michael Donar">
-  <meta name="twitter:description" content="Check out Michael Donar's portfolio site and look at their projects and skills, and view their impressive live
-       sites and resume and contact information">
+  <meta name="twitter:title" content="Michael Donar - Portfolio">
+  <meta name="twitter:description"
+    content="Explore Michael Donar's portfolio, showcasing projects, skills, live sites, and contact information.">
   <meta name="twitter:image" content="https://mdonar21.github.io/MichaelDonarPortfolio/assets/thumb.png">
 
-  <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="./style/style.css" />
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style/styleLight.css">
+  <!----<link rel="stylesheet" href="./style/style.css"> -->
+
   <script src="script.js" defer></script>
-</head>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat&display=swap" rel="stylesheet" />
 </head>
 
 <body>
+
   <header>
+    <div class="logo">Michael Donar</div>
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Page</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <section class="hero">
-    <div class="shape circle-1"></div>
-    <div class="shape circle-2"></div>
-    <div class="abstract-line line-1"></div>
-    <div class="abstract-line line-2"></div>
     <div class="hero-text">
       <h2>HI! I’m Michael Donar</h2>
       <h1 aria-label="Hi! I'm a developer">
@@ -57,28 +57,60 @@
       </h1>
       <p>
         Passionate about solving challenges in unique ways through insightful research. Outside of UX, I enjoy exploring
-        my academic
-        interests in wargaming and future technologies.
+        my academic interests in wargaming and future technologies.
       </p>
       <button class="btn">Contact Me</button>
-      <a href="https://www.linkedin.com/in/michael-donar/" target="_blank"><button class="btn">linkedin</button></a>
+      <a href="https://www.linkedin.com/in/michael-donar/" target="_blank" rel="noopener noreferrer"><button
+          class="btn">LinkedIn</button></a>
     </div>
   </section>
-  <section class="image-grid">
+
+  <section class="image-grid" id="projects">
     <figure>
-      <img src="./assets/matrixGameThumb.jpg" alt="Placeholder image 1" />
-      <figcaption>Caption for Image 1</figcaption>
+      <div class="image-hover">
+        <a href="./capital.html" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/wargameThumb.jpg" alt="Wargame Thumbnail Image">
+          <div class="overlay">More Info</div>
+        </a>
+      </div>
+      <figcaption>Crisis in the Capital</figcaption>
     </figure>
+
     <figure>
-      <img src="./assets/loopLabsThumb.png" alt="Placeholder image 2" />
-      <figcaption>Caption for Image 2</figcaption>
+      <div class="image-hover">
+        <a href="./capital.html" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/loop.gif" alt="Loop Labs GIF">
+          <div class="overlay">More Info</div>
+        </a>
+      </div>
+      <figcaption>Loop Labs</figcaption>
     </figure>
+
     <figure>
-      <img src="./assets/learnItThumb.png" alt="Placeholder image 3" />
-      <figcaption>Caption for Image 3</figcaption>
+      <div class="image-hover">
+        <a href="./capital.html" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/learnItThumb.png" alt="Learn it App Mockup">
+          <div class="overlay">More Info</div>
+        </a>
+      </div>
+      <figcaption>Learn It App</figcaption>
     </figure>
+
     <figure>
-      <img src="./assets/ronThumb.jpg" alt="Placeholder image 4" />
-      <figcaption>Caption for Image 4</figcaption>
+      <div class="image-hover">
+        <a href="./capital.html" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/ronthumb1.avif" alt="Ready or Not Game Project">
+          <div class="overlay">More Info</div>
+        </a>
+      </div>
+      <figcaption>Ready or Not Game Project</figcaption>
     </figure>
-  </section </section> </body> </html>
+  </section>
+
+  <footer id="contact">
+    <p>&copy; 2025 Michael Donar. All rights reserved.</p>
+  </footer>
+
+</body>
+
+</html>

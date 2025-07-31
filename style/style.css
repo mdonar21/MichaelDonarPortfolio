@@ -1,4 +1,44 @@
-/* Header Font */
+/*------------------------------------*\
+  #BASE STYLES
+\*------------------------------------*/
+
+/* Universal Box-Sizing */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Smooth Scrolling for Anchor Links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Body Base Styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: black;
+  color: white;
+  min-height: 500px;
+  /* For parallax effect */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 80px;
+  /* Prevents content from being hidden by fixed header */
+  overflow-x: hidden;
+  /* Prevent horizontal scroll due to shapes */
+  transform: translateZ(0);
+  /* Optimize for 3D transforms */
+}
+
+/*------------------------------------*\
+  #TYPOGRAPHY
+\*------------------------------------*/
+
+/* Header Font (DM Sans) */
 .dm-sans-head {
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
@@ -6,7 +46,7 @@
   font-style: normal;
 }
 
-/* Sub Font */
+/* Sub Font (Montserrat) */
 .montserrat-sub {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
@@ -14,67 +54,52 @@
   font-style: normal;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+  color: #035b87;
+  /* Primary heading color */
 }
 
-html {
-  scroll-behavior: smooth;
-  /* Makes scrolling to anchor links smooth */
+/* Paragraphs */
+p {
+  color: white;
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #d6d6d0;
-  color: black;
-  min-height: 500px;
-  /* Create the parallax scrolling effect */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 80px;
-  /* Add padding to the body to prevent content from being hidden behind the fixed header. Adjust as needed based on header height. */
-  overflow-x: hidden;
-  transform: translateZ(0);
-  /* Prevent horizontal scroll due to shapes */
-}
+/*------------------------------------*\
+  #HEADER
+\*------------------------------------*/
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: rgba(214, 214, 208, 0.95);
-  /* Slightly transparent background for fixed header */
   position: fixed;
-  /* Makes the header scroll with the user */
+  /* Makes the header sticky */
   top: 0;
-  /* Positions it at the top of the viewport */
   left: 0;
-  /* Aligns it to the left of the viewport */
   width: 100%;
-  /* Makes it span the full width of the viewport */
   z-index: 1000;
-  /* Ensures it stays on top of other content */
+  /* Ensures it stays on top */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* Optional: adds a subtle shadow */
+  /* Subtle shadow */
 }
 
 .logo {
   font-size: 1.2rem;
   font-weight: bold;
   background-color: black;
-  color: black;
+  color: white;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Navigation */
 nav ul {
   list-style: none;
   display: flex;
@@ -82,8 +107,8 @@ nav ul {
 }
 
 nav a {
-  color: #023047;
-  /* Changed to match h1/h2 color for better contrast on a light background */
+  color: white;
+  /* Changed for better contrast */
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
@@ -93,18 +118,10 @@ nav a:hover {
   color: #aaa;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  color: #023047;
-}
+/*------------------------------------*\
+  #HERO SECTION
+\*------------------------------------*/
 
-p {
-  color: #121211;
-}
-
-/* User's .hero styles, augmented for shapes */
 .hero {
   position: relative;
   /* Essential for absolute positioning of shapes */
@@ -113,7 +130,6 @@ p {
   justify-content: space-between;
   padding: 60px 40px;
   height: 90vh;
-  /* Maintain user's height */
   overflow: hidden;
   /* Clip shapes that go outside */
 }
@@ -141,6 +157,20 @@ p {
   margin-bottom: 30px;
 }
 
+.hero-image-placeholder {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 1rem;
+  margin-right: 4em;
+  z-index: 50;
+  /* Ensure image is above shapes */
+}
+
+/* Buttons */
 .btn {
   background: #023047;
   color: white;
@@ -159,134 +189,122 @@ p {
   /* Changed hover color for better contrast */
 }
 
-.hero-image-placeholder {
-  width: 400px;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #555;
-  font-size: 1rem;
-  margin-right: 4em;
-  z-index: 50;
-  /* Ensure image is above shapes */
+/*------------------------------------*\
+  #HERO SHAPES & BACKGROUND
+\*------------------------------------*/
+
+.shape {
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0.75rem;
+  /* Rounded corners for all shapes */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Subtle shadow */
+  transition: all 0.3s ease-in-out;
+  /* Smooth transitions for responsiveness */
+  z-index: 10;
+  /* Ensure shapes are behind hero-text and hero-image-placeholder */
 }
 
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    justify-content: flex-start;
-    /* Adjust for mobile layout */
-    padding-top: 5rem;
-  }
-
-  .hero-text,
-  .hero-image-placeholder {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .hero-image-placeholder {
-    height: 250px;
-    margin-top: 30px;
-  }
-
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  /* Mobile responsiveness for shapes */
-  .shape {
-    width: 30vw;
-    /* Larger shapes on smaller screens for visibility */
-    height: 30vw;
-  }
-
-  .circle-1 {
-    top: 5vh;
-    left: 5vw;
-  }
-
-  .diamond {
-    width: 35vw;
-    height: 35vw;
-    top: 25vh;
-    left: 50%;
-    transform: translateX(-50%);
-    /* Center diamond */
-  }
-
-  .irregular {
-    width: 38vw;
-    height: 38vw;
-    top: 5vh;
-    right: 5vw;
-  }
-
-  .circle-2 {
-    width: 25vw;
-    height: 25vw;
-    bottom: 5vh;
-    left: 10vw;
-    transform: none;
-    /* Remove translateX */
-  }
-
-  .abstract-line {
-    display: none;
-    /* Hide abstract lines on very small screens to avoid clutter */
-  }
+/* Circle 1 (Top-Left) */
+.circle-1 {
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  /* Perfect circle */
+  top: 10vh;
+  left: 10vw;
+  background-color: rgba(255, 0, 0, 0.0);
+  /* Example: transparent if only for border */
 }
 
-@media (max-width: 480px) {
-  .shape {
-    width: 40vw;
-    height: 40vw;
-  }
-
-  .circle-1 {
-    top: 3vh;
-    left: 3vw;
-  }
-
-  .diamond {
-    width: 45vw;
-    height: 45vw;
-    top: 20vh;
-  }
-
-  .irregular {
-    width: 48vw;
-    height: 48vw;
-    top: 3vh;
-    right: 3vw;
-  }
-
-  .circle-2 {
-    width: 35vw;
-    height: 35vw;
-    bottom: 3vh;
-    left: 5vw;
-  }
+/* Circle 2 (Bottom-Center) */
+.circle-2 {
+  width: 12vw;
+  height: 12vw;
+  border-radius: 50%;
+  bottom: 15vh;
+  left: 45vw;
 }
 
-/* Typewriter Effect for Hero Section */
+/* Abstract Lines/Curves */
+.abstract-line {
+  position: absolute;
+  border: 2px solid #f97316;
+  /* Orange color from the image */
+  border-radius: 50%;
+  /* Make it circular for curves */
+  opacity: 0.6;
+  z-index: 5;
+  /* Even further back */
+}
+
+.line-1 {
+  width: 60vw;
+  height: 60vw;
+  top: -20vh;
+  left: -20vw;
+  transform: rotate(-15deg);
+  border-left-color: transparent;
+  /* Create a partial circle */
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.line-2 {
+  width: 40vw;
+  height: 40vw;
+  bottom: -10vh;
+  right: -10vw;
+  transform: rotate(45deg);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  background-color: #f97316;
+  /* Example: solid color for line */
+}
+
+/*------------------------------------*\
+  #TYPEWRITER EFFECT
+\*------------------------------------*/
+
 .typewriter {
   display: inline-block;
   min-width: 200px;
   overflow: hidden;
   white-space: nowrap;
   animation: typing-effect 8s infinite steps(1) forwards;
+  /* This specific animation seems to be a placeholder for the actual typing keyframes */
   vertical-align: bottom;
+  --caret: currentcolor;
+  /* Custom property for caret color */
 }
 
-/*Typewriter*/
-/* Typewriter effect 1 */
+.typewriter::before {
+  content: "";
+  animation: typing 13.5s infinite;
+  /* Connects to the @keyframes typing */
+}
+
+.typewriter::after {
+  content: "";
+  border-right: 1px solid var(--caret);
+  animation: blink 0.5s linear infinite;
+}
+
+.typewriter.thick::after {
+  border-right: 1ch solid var(--caret);
+}
+
+.typewriter.nocaret::after {
+  border-right: 0;
+}
+
+/* Keyframes for Typewriter Typing Animation */
 @keyframes typing {
 
-  /*Designer*/
+  /* Designer */
   0.0000%,
   27.3488% {
     content: "";
@@ -420,6 +438,7 @@ p {
   }
 }
 
+/* Keyframes for Typewriter Blink Animation */
 @keyframes blink {
 
   0%,
@@ -432,30 +451,7 @@ p {
   }
 }
 
-.typewriter {
-  --caret: currentcolor;
-}
-
-.typewriter::before {
-  content: "";
-  animation: typing 13.5s infinite;
-}
-
-.typewriter::after {
-  content: "";
-  border-right: 1px solid var(--caret);
-  animation: blink 0.5s linear infinite;
-}
-
-.typewriter.thick::after {
-  border-right: 1ch solid var(--caret);
-}
-
-.typewriter.nocaret::after {
-  border-right: 0;
-}
-
-
+/* Reduced Motion Preference for Typewriter */
 @media (prefers-reduced-motion) {
   .typewriter::after {
     animation: none;
@@ -487,9 +483,32 @@ p {
   }
 }
 
+/*------------------------------------*\
+  #UTILITIES & MISCELLANEOUS
+\*------------------------------------*/
 
+/* Image Overlay (e.g., for hover effects) */
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
 
+.figure:hover .overlay {
+  opacity: 1;
+}
 
+/* Down Arrow Animation */
+.down-arrow {
+  animation: jumpInfinite 1.5s infinite;
+}
 
 @keyframes jumpInfinite {
   0% {
@@ -505,94 +524,71 @@ p {
   }
 }
 
-.down-arrow {
-  animation: jumpInfinite 1.5s infinite;
+/*------------------------------------*\
+  #PROJECT PAGE
+\*------------------------------------*/
+
+.project-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: "Montserrat", sans-serif;
 }
 
-/* Styles for shapes - Merged from previous immersive */
-.shape {
-  position: absolute;
-  /* Placeholder circular image */
-  background-size: cover;
-  /* Ensure the image covers the entire shape */
-  background-position: center;
-  /* Center the image within the shape */
-  background-repeat: no-repeat;
-  border-radius: 0.75rem;
-  /* Rounded corners for all shapes */
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  /* Subtle shadow */
-  transition: all 0.3s ease-in-out;
-  /* Smooth transitions for responsiveness */
-  z-index: 10;
-  /* Ensure shapes are behind hero-text and hero-image-placeholder */
+.project-header {
+  text-align: left;
+  margin-bottom: 60px;
 }
 
-/* Circle 1 (Top-Left) */
-.circle-1 {
-  width: 15vw;
-  height: 15vw;
-  border-radius: 50%;
-  /* Perfect circle */
-  top: 10vh;
-  left: 10vw;
+.project-roles {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
-/* Diamond (Center-Left) */
-
-/* Irregular Shape (Top-Right) - Approximated with a custom polygon */
-
-/* Circle 2 (Bottom-Center) */
-.circle-2 {
-  width: 12vw;
-  height: 12vw;
-  border-radius: 50%;
-  bottom: 15vh;
-  left: 45vw;
+.project-section {
+  margin-bottom: 50px;
 }
 
-/* Abstract Lines/Curves */
-.abstract-line {
-  position: absolute;
-  border: 2px solid #f97316;
-  /* Orange color from the image */
-  border-radius: 50%;
-  /* Make it circular for curves */
-  opacity: 0.6;
-  z-index: 5;
-  /* Even further back */
+.project-section h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
 }
 
-.line-1 {
-  width: 60vw;
-  height: 60vw;
-  top: -20vh;
-  left: -20vw;
-  transform: rotate(-15deg);
-  border-left-color: transparent;
-  /* Create a partial circle */
-  border-bottom-color: transparent;
-  border-right-color: transparent;
+.project-section h3 {
+  font-size: 1.2em;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #00bcd4;
 }
 
-.line-2 {
-  width: 40vw;
-  height: 40vw;
-  bottom: -10vh;
-  right: -10vw;
-  transform: rotate(45deg);
-  border-top-color: transparent;
-  border-left-color: transparent;
+.project-section p {
+  line-height: 1.7;
 }
- 
-/* Project Page */
+
+.img-placeholder {
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+  background-color: #ccc;
+  margin: 20px 0;
+}
+
+.image-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Image Grid for Projects */
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 20px; 
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
   padding: 20px;
-  max-width: 1200px; 
-  margin: 0 auto; 
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .image-grid figure {
@@ -600,17 +596,15 @@ p {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  overflow: hidden; 
-
+  overflow: hidden;
 }
 
 .image-grid img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 4px; 
+  border-radius: 4px;
 }
-
 
 .image-grid figcaption {
   margin: 10px 0 0 0;
@@ -618,4 +612,127 @@ p {
   font-family: Arial;
   font-weight: bold;
   text-align: center;
+}
+
+.image-grid a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+
+/*------------------------------------*\
+  #MEDIA QUERIES
+\*------------------------------------*/
+
+@media (max-width: 768px) {
+
+  /* Header adjustments */
+  header {
+    background-color: black;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Hero section adjustments */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    justify-content: flex-start;
+    /* Adjust for mobile layout */
+    padding-top: 5rem;
+  }
+
+  .hero-text,
+  .hero-image-placeholder {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero-image-placeholder {
+    height: 250px;
+    margin-top: 30px;
+    margin-right: 0;
+    /* Remove right margin on smaller screens */
+  }
+
+  /* Mobile responsiveness for shapes */
+  .shape {
+    width: 30vw;
+    /* Larger shapes on smaller screens for visibility */
+    height: 30vw;
+  }
+
+  .circle-1 {
+    top: 5vh;
+    left: 5vw;
+  }
+
+  /* Assuming 'diamond' and 'irregular' are shapes,
+     but their base styles are missing in the provided code.
+     Adjusting existing media queries for them. */
+  .diamond {
+    width: 35vw;
+    height: 35vw;
+    top: 25vh;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Center diamond */
+  }
+
+  .irregular {
+    width: 38vw;
+    height: 38vw;
+    top: 5vh;
+    right: 5vw;
+  }
+
+  .circle-2 {
+    width: 25vw;
+    height: 25vw;
+    bottom: 5vh;
+    left: 10vw;
+    transform: none;
+    /* Remove translateX */
+  }
+
+  .abstract-line {
+    display: none;
+    /* Hide abstract lines on very small screens to avoid clutter */
+  }
+}
+
+@media (max-width: 480px) {
+  .shape {
+    width: 40vw;
+    height: 40vw;
+  }
+
+  .circle-1 {
+    top: 3vh;
+    left: 3vw;
+  }
+
+  .diamond {
+    width: 45vw;
+    height: 45vw;
+    top: 20vh;
+  }
+
+  .irregular {
+    width: 48vw;
+    height: 48vw;
+    top: 3vh;
+    right: 3vw;
+  }
+
+  .circle-2 {
+    width: 35vw;
+    height: 35vw;
+    bottom: 3vh;
+    left: 5vw;
+  }
 }
