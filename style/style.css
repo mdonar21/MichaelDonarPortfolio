@@ -1,4 +1,40 @@
-/* Header Font */
+/*------------------------------------*\
+  #BASE STYLES
+\*------------------------------------*/
+
+/* Universal Box-Sizing */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Smooth Scrolling for Anchor Links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Body Base Styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: black;
+  color: white;
+  min-height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 80px;
+  overflow-x: hidden;
+  transform: translateZ(0);
+}
+
+/*------------------------------------*\
+  #TYPOGRAPHY
+\*------------------------------------*/
+
+/* Header Font (DM Sans) */
 .dm-sans-head {
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
@@ -6,7 +42,7 @@
   font-style: normal;
 }
 
-/* Sub Font */
+/* Sub Font (Montserrat) */
 .montserrat-sub {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
@@ -14,207 +50,737 @@
   font-style: normal;
 }
 
-
-body {
-  margin: 0;
-  background-color: #141314;
-  color: white;
-  padding-left: 2rem;
-  padding-right: 2rem;
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+  color: #03A9C9;
 }
 
-.navbar {
+/* Paragraphs */
+p {
+  color: white;
+}
+
+/*------------------------------------*\
+  #HEADER
+\*------------------------------------*/
+
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "DM Sans";
-  color: white;
-  padding-top: 1.2rem;
+  padding: 20px 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.navbar .name {
-  background: linear-gradient(90deg, #0077FF, #B21593);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  font-size: 1.4rem;
-  font-weight: bold;
-}
-
-.navbar .nav-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.navbar .nav-links a {
-  text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s;
-  color: white;
-}
-
-.navbar .nav-links a:hover {
-  color: #ffcc00;
-}
-
-.infosec {
-  padding-top: 4rem;
-  font-family: "DM Sans", sans-serif;
-  font-size: 1.6rem;
-}
-
-.nameSpan {
-  background: linear-gradient(90deg, #0077FF, #B21593);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-}
-
-.infosec p {
+.logo {
   font-size: 1.2rem;
-  font-family: "Montserrat", sans-serif;
-  color: E2E2E2;
-}
-
-/* Project Cards */
-article {
-  --img-scale: 1.001;
-  --title-color: black;
-  --link-icon-translate: -20px;
-  --link-icon-opacity: 0;
-  position: relative;
-  border-radius: 16px;
-  box-shadow: none;
-  background: #fff;
-  transform-origin: center;
-  transition: all 0.4s ease-in-out;
-  overflow: hidden;
-}
-
-article a::after {
-  position: absolute;
-  inset-block: 0;
-  inset-inline: 0;
-  cursor: pointer;
-  content: "";
-}
-
-/* basic article elements styling */
-article h2 {
-  margin: 0 0 18px 0;
-  font-family: "Bebas Neue", cursive;
-  font-size: 1.9rem;
-  letter-spacing: 0.06em;
-  color: var(--title-color);
-  transition: color 0.3s ease-out;
-}
-
-figure {
-  margin: 0;
-  padding: 0;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  border-radius: 1rem;
-  border-color: #0077FF;
-}
-
-article img {
-  max-width: 100%;
-  transform-origin: center;
-  transform: scale(var(--img-scale));
-  transition: transform 0.4s ease-in-out;
-}
-
-.article-body {
-  padding: 24px;
-}
-
-article a {
-  display: inline-flex;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  padding: 5px 10px;
+  display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
   text-decoration: none;
-  color: #28666e;
+  font-size: 1.6em;
+  transition: color 0.3s ease;
 }
 
-article a:focus {
-  outline: 1px dotted #28666e;
+nav a:hover {
+  color: #aaa;
 }
 
-article a .icon {
-  min-width: 24px;
-  width: 24px;
-  height: 24px;
-  margin-left: 5px;
-  transform: translateX(var(--link-icon-translate));
-  opacity: var(--link-icon-opacity);
-  transition: all 0.3s;
+/*------------------------------------*\
+  #HERO SECTION
+\*------------------------------------*/
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 40px;
+  height: 90vh;
+  overflow: hidden;
 }
 
-/* using the has() relational pseudo selector to update our custom properties */
-article:has(:hover, :focus) {
-  --img-scale: 1.1;
-  --title-color: #28666e;
-  --link-icon-translate: 0;
-  --link-icon-opacity: 1;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+.hero-text {
+  max-width: 50%;
+  z-index: 50;
 }
 
-
-/************************ 
-Generic layout (demo looks)
-**************************/
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+.hero-text h4 {
+  font-weight: 300;
+  margin-bottom: 10px;
 }
 
-.articles {
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  max-width: 400px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.hero-image-placeholder {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 1rem;
+  margin-right: 4em;
+  z-index: 50;
+}
+
+/* Buttons */
+.btn {
+  background: #023047;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #eee;
+  color: #023047;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.hero-buttons .btn {
+  margin-right: 0;
+}
+
+/*------------------------------------*\
+  #HERO SHAPES & BACKGROUND
+\*------------------------------------*/
+
+.shape {
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+}
+
+/* Circle 1 (Top-Left) */
+.circle-1 {
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  top: 10vh;
+  left: 10vw;
+  background-color: rgba(255, 0, 0, 0.0);
+}
+
+/* Circle 2 (Bottom-Center) */
+.circle-2 {
+  width: 12vw;
+  height: 12vw;
+  border-radius: 50%;
+  bottom: 15vh;
+  left: 45vw;
+}
+
+/* Abstract Lines/Curves */
+.abstract-line {
+  position: absolute;
+  border: 2px solid #f97316;
+  border-radius: 50%;
+  opacity: 0.6;
+  z-index: 5;
+}
+
+.line-1 {
+  width: 60vw;
+  height: 60vw;
+  top: -20vh;
+  left: -20vw;
+  transform: rotate(-15deg);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.line-2 {
+  width: 40vw;
+  height: 40vw;
+  bottom: -10vh;
+  right: -10vw;
+  transform: rotate(45deg);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  background-color: #f97316;
+}
+
+/*------------------------------------*\
+  #TYPEWRITER EFFECT
+\*------------------------------------*/
+
+.typewriter {
+  display: inline-block;
+  min-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing-effect 8s infinite steps(1) forwards;
+  vertical-align: bottom;
+  --caret: currentcolor;
+}
+
+.typewriter::before {
+  content: "";
+  animation: typing 13.5s infinite;
+}
+
+.typewriter::after {
+  content: "";
+  border-right: 1px solid var(--caret);
+  animation: blink 0.5s linear infinite;
+}
+
+.typewriter.thick::after {
+  border-right: 1ch solid var(--caret);
+}
+
+.typewriter.nocaret::after {
+  border-right: 0;
+}
+
+/* Keyframes for Typewriter Typing Animation */
+@keyframes typing {
+
+  0.0000%,
+  27.3488% {
+    content: "";
+  }
+
+  3.4186%,
+  23.9302% {
+    content: "d";
+  }
+
+  4.5581%,
+  22.7907% {
+    content: "de";
+  }
+
+  5.6977%,
+  21.6512% {
+    content: "des";
+  }
+
+  6.8372%,
+  20.5116% {
+    content: "desi";
+  }
+
+  7.9767%,
+  19.3721% {
+    content: "desig";
+  }
+
+  9.1163%,
+  18.2326% {
+    content: "design";
+  }
+
+  10.2558%,
+  17.0930% {
+    content: "designer";
+  }
+
+  27.5000%,
+  54.8488% {
+    content: "";
+  }
+
+  30.9186%,
+  51.4302% {
+    content: "r";
+  }
+
+  32.0581%,
+  50.2907% {
+    content: "re";
+  }
+
+  33.1977%,
+  49.1512% {
+    content: "res";
+  }
+
+  34.3372%,
+  48.0116% {
+    content: "rese";
+  }
+
+  35.4767%,
+  46.8721% {
+    content: "resea";
+  }
+
+  36.6163%,
+  45.7326% {
+    content: "resear";
+  }
+
+  37.7558%,
+  44.5930% {
+    content: "researc";
+  }
+
+  38.8953%,
+  43.4535% {
+    content: "researche";
+  }
+
+  40.0349%,
+  42.3140% {
+    content: "researcher";
+  }
+
+  55.0000%,
+  82.3488% {
+    content: "";
+  }
+
+  58.4186%,
+  78.9302% {
+    content: "l";
+  }
+
+  59.5581%,
+  77.7907% {
+    content: "le";
+  }
+
+  60.6977%,
+  76.6512% {
+    content: "lea";
+  }
+
+  61.8372%,
+  75.5116% {
+    content: "lear";
+  }
+
+  62.9767%,
+  74.3721% {
+    content: "learn";
+  }
+
+  64.1163%,
+  73.2326% {
+    content: "learne";
+  }
+
+  65.2558%,
+  72.0930% {
+    content: "learner";
+  }
+}
+
+/* Keyframes for Typewriter Blink Animation */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Reduced Motion Preference for Typewriter */
+@media (prefers-reduced-motion) {
+  .typewriter::after {
+    animation: none;
+  }
+
+  @keyframes sequencePopup {
+
+    0%,
+    100% {
+      content: "developer";
+    }
+
+    25% {
+      content: "writer";
+    }
+
+    50% {
+      content: "reader";
+    }
+
+    75% {
+      content: "human";
+    }
+  }
+
+  .typewriter::before {
+    content: "developer";
+    animation: sequencePopup 12s linear infinite;
+  }
+}
+
+/*------------------------------------*\
+  #UTILITIES & MISCELLANEOUS
+\*------------------------------------*/
+
+/* Image Overlay (e.g., for hover effects) */
+
+.image-grid figure:hover .overlay {
+  opacity: 1;
+}
+
+@keyframes jumpInfinite {
+  0% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: 20px;
+  }
+
+  100% {
+    margin-top: 0;
+  }
+}
+
+/*------------------------------------*\
+  #PROJECT PAGE
+\*------------------------------------*/
+
+.project-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.project-header {
+  text-align: left;
+  margin-bottom: 60px;
+}
+
+.project-roles {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.project-section {
+  margin-bottom: 50px;
+}
+
+.project-section h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.project-section h3 {
+  font-size: 1.2em;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #00bcd4;
+}
+
+.project-section p {
+  line-height: 1.7;
+}
+
+.img-placeholder {
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+  background-color: #ccc;
+  margin: 20px 0;
+}
+
+.image-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/*------------------------------------*\
+  #IMAGE GRID - MOBILE FIXES
+\*------------------------------------*/
+
+.image-grid {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
   max-width: 1200px;
-  max-height: px;
-  margin-inline: auto;
-  padding-inline: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
-  margin-top: 4rem;
-
+  margin: 0 auto;
 }
 
-@media screen and (max-width: 960px) {
-  article {
-    container: card/inline-size;
-  }
-  .article-body p {
-    display: none;
-  }
+.image-grid figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  overflow: hidden;
 }
 
-@container card (min-width: 380px) {
-  .article-wrapper {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 16px;
+.image-grid .image-hover {
+  position: relative;
+  width: 100%;
+  padding-bottom: 66.66%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.image-grid .image-hover a {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.image-grid img {
+  object-fit: cover;
+  width: 550px;
+  height: 366px;
+  display: block;
+  border-radius: 4px;
+}
+
+
+
+.image-grid figcaption {
+  margin-top: 15px;
+  font-variant: small-caps;
+  font-family: Arial;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  padding: 0 5px;
+}
+
+.image-grid a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.secondcap{
+  font-size: .8em;
+}
+
+/*------------------------------------*\
+  #FOOTER
+\*------------------------------------*/
+footer {
+  padding-top: 8em;
+  text-align: center;
+}
+
+
+/* ... (rest of your CSS above) ... */
+
+/*------------------------------------*\
+  #HERO SECTION
+\*------------------------------------*/
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 40px;
+  height: 90vh;
+  overflow: hidden;
+}
+
+.hero-text {
+  max-width: 50%;
+  z-index: 50;
+}
+
+.hero-text h4 {
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  max-width: 400px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.hero-image-placeholder {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 1rem;
+  margin-right: 4em;
+  z-index: 50;
+}
+
+/* Buttons (Default/Desktop Styles) */
+.btn {
+  background: #023047;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  /* Removed margin-right here, managed by parent gap */
+}
+
+.btn:hover {
+  background: #eee;
+  color: #023047;
+}
+
+/* Container for Hero Buttons */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allows wrapping on smaller screens */
+  gap: 1em;
+  /* Horizontal gap between buttons on desktop */
+  justify-content: flex-start;
+  /* Aligns buttons to the left on desktop */
+}
+
+/* ... (rest of your CSS down to media queries) ... */
+
+
+
+/*------------------------------------*\
+  #MEDIA QUERIES - MOBILE FOCUS
+\*------------------------------------*/
+
+@media (max-width: 768px) {
+
+  body {
+    padding-top: 60px;
   }
-  .article-body {
-    padding-left: 0;
+
+  header {
+    background-color: black;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 2em;
   }
-  figure {
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  nav {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    margin-top: 10px;
   }
-  figure img {
-    height: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
+
+ 
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
   }
+
+  .typewriter {
+    padding: 0%;
+    padding-top: 2em;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    justify-content: flex-start;
+    padding: 30px 20px;
+    height: auto;
+    min-height: 80vh;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-text p {
+    padding-top: 2em;
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-content: center;
+    width: 100%;
+  }
+.image-grid img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 4px;
+
 }
 
-.sr-only:not(:focus):not(:active) {
-  clip: rect(0 0 0 0); 
-  clip-path: inset(50%);
+
 }
